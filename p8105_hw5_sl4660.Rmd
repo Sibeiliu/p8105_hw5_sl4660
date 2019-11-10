@@ -107,3 +107,24 @@ output=rerun(10000,sim_regression(beta1=0)) %>%
   bind_rows()
 output
 ```
+
+```{r}
+beta1_list = list("beta1_1"  = 1, 
+              "beta1_2"  = 2, 
+              "beta1_3" = 3, 
+              "beta1_4" = 4,
+              "beta1_5" = 5,
+              "beta1_6" = 6
+              )
+
+output2 = vector("list", length = 6)
+
+for(i in 1:6) {
+  output2[[i]] = rerun(10000, sim_regression(beta1=beta1_list[[i]])) %>% 
+    bind_rows()
+} 
+
+output_final=output2 %>% bind_rows() 
+  
+output_final
+```

@@ -1,0 +1,22 @@
+---
+title: "p8105_hw5_sl4660"
+author: "Sibei Liu"
+date: "2019/11/10"
+output: github_document
+---
+
+```{r setup}
+knitr::opts_chunk$set(set.seed(10))
+```
+
+# Problem 1
+```{r,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(ggrepel)
+
+
+iris_with_missing = iris %>% 
+  map_df(~replace(.x, sample(1:150, 20), NA)) %>%
+  mutate(Species = as.character(Species)) %>% 
+  janitor::clean_names()
+```

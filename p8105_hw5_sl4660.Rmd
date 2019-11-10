@@ -51,11 +51,13 @@ data_total=list.files("./data")
 data_total=str_c("./data/",data_total)
 ```
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 data_total=list.files("./data") %>%
   tibble()  %>% 
   rename(file_name=".") %>% 
   mutate(
    detail= map(data_total,read_csv) 
-  )
+  ) 
+
+data_total
 ```

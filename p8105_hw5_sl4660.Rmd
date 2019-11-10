@@ -43,3 +43,19 @@ iris_without_missing
 ```
 
 The table after filling missing values is shown above
+
+# Problem 2
+
+```{r}
+data_total=list.files("./data")
+data_total=str_c("./data/",data_total)
+```
+
+```{r}
+data_total=list.files("./data") %>%
+  tibble()  %>% 
+  rename(file_name=".") %>% 
+  mutate(
+   detail= map(data_total,read_csv) 
+  )
+```

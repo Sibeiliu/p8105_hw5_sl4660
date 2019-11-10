@@ -81,3 +81,5 @@ cleaned_data
 ```{r}
 ggplot(cleaned_data,aes(x=week_time,y=data,color=id,group=id))+geom_point()+geom_line()+facet_grid(~type)+theme(axis.text.x = element_text(angle = 60, hjust=1))
 ```
+
+Comment: In control group, the lines are fluctuating.The data dosen't change a lot when time increases While in the experinment group, the genereal trend is upward. While the time increase, the data increases.

@@ -76,3 +76,8 @@ separate(col=file_name,into=c("type","id"),sep="_")%>%
 
 cleaned_data
 ```
+
+
+```{r}
+ggplot(cleaned_data,aes(x=week_time,y=data,color=id,group=id))+geom_point()+geom_line()+facet_grid(~type)+theme(axis.text.x = element_text(angle = 60, hjust=1))
+```

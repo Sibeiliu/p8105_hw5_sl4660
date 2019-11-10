@@ -20,3 +20,26 @@ iris_with_missing = iris %>%
   mutate(Species = as.character(Species)) %>% 
   janitor::clean_names()
 ```
+
+
+
+```{r}
+
+fill_missing= function(x) {
+  
+  if (is.numeric(x)){
+  replace_na(x,mean(x,na.rm=TRUE))
+  } else if(is.character(x)){
+    replace_na(x,"virginica")
+  }    
+}
+
+iris_without_missing= iris_with_missing %>% 
+  map(fill_missing) %>% 
+  bind_cols() %>%  
+  knitr::kable(digit=3)
+
+iris_without_missing
+```
+
+The table after filling missing values is shown above
